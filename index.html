@@ -70,8 +70,8 @@
       return canvas;
     })(),
     locateFile: function (path, prefix) {
-      if (path.endsWith(".wasm")) { return (g_webex_basedir + path); }
-      if (path.endsWith(".data")) { return (g_webex_basedir + path); }
+      if (path.endsWith(".wasm")) { return (/*g_webex_basedir*/"./" + path); }
+      if (path.endsWith(".data")) { return (/*g_webex_basedir*/"./" + path); }
       return prefix + path;
     },
     onRuntimeInitialized: function () { }
