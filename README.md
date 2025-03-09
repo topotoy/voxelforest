@@ -1,2 +1,2 @@
-# topotoy.github.io/forest
-topotoy.github.io/forest
+# topotoy.github.io/prototoy
+topotoy.github.io/prototoy

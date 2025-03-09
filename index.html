@@ -3,107 +3,92 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="./favicon.ico">
+  <link rel="icon" type="image/png" href="./favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Interact Wave</title>
-  <link rel="author" href="https://topotoy.github.io/" />
+  <title>Simple Game Project Template</title>
+  <link rel="author" href="https://topotoy.com/" />
 
   <!-- HTML Meta Tags -->
-  <title>Interact Wave</title>
-  <meta name="description" content="Interact with wave.">
-  <meta name="keywords" content="Optics">
+  <title>Simple Game Project Template</title>
+  <meta name="description" content="Simple Game Project Template">
+  <meta name="keywords" content="Physics">
 
   <!-- Facebook Meta Tags -->
-  <meta property="og:url" content="https://topotoy.github.io/voxelforest/">
+  <meta property="og:url" content="https://topotoy.com/prototoy/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Interact Wave">
-  <meta property="og:description" content="Interact with wave.">
-  <meta property="og:image" content="https://topotoy.github.io/voxelforest/cover.jpg">
+  <meta property="og:title" content="Simple Game Project Template">
+  <meta property="og:description" content="Simple Game Project Template.">
+  <meta property="og:image" content="https://topotoy.com/prototoy/cover.jpg">
 
   <!-- Twitter Meta Tags -->
-  <meta name="twitter:card" content="Shader based wave propagation method.">
-  <meta property="twitter:domain" content="topotoy.github.io">
-  <meta property="twitter:url" content="https://topotoy.github.io/voxelforest/">
-  <meta name="twitter:title" content="Interact Wave">
-  <meta name="twitter:description" content="Interact with wave.">
-  <meta name="twitter:image" content="https://topotoy.github.io/voxelforest/cover.jpg">
+  <meta name="twitter:card" content="WASM-based topotoy videogame.">
+  <meta property="twitter:domain" content="topotoy.com">
+  <meta property="twitter:url" content="https://topotoy.com/prototoy/">
+  <meta name="twitter:title" content="Simple Game Project Template">
+  <meta name="twitter:description" content="Simple Game Project Template.">
+  <meta name="twitter:image" content="https://topotoy.com/prototoy/cover.jpg">
 
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
 
-  <!--  <link rel="stylesheet" crossorigin href="./assets/index-DWfvFEcn.css"> -->
+    canvas {
+      width: 800px;
+      height: 600px;
+      background-color: #333;
+      border: 1px solid white;
+    }
 
+    .container {
+      text-align: center;
+      color: white;
+    }
+  </style>
 </head>
 
 <body>
   <div id="app">
     <div class="container">
-      <button id="toggleButton">Toggle mode</button>
-      <canvas id="canvas" width="800" height="600" oncontextmenu="event.preventDefault()"></canvas>
-      <!--        <div id="canvas" width="100px" height="100px">
-      <div class="placeholder">
-            <p>Loading...</p>
-          </div>
-          <div class="overlay">
-            <svg width="100%" viewBox="0 0 100 100">
-            </svg>
-          </div>
-      </div>-->
-      <p>Hold and drag to interact.</p>
-      <h2>About</h2>
-      <p>A demo by <a href="https://topotoy.github.io" target="_blank">Hans Chiu</a>.</p>
-      <p>This is a shader based wave propagation demonstration. </p>
-      <a href="https://github.com/topotoy/voxelforest" target="_blank">GitHub Repo</a>
+      <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+      <p>Hold the mouse to grab.</p>
+      <h2>Simple Game Project Template</h2>
+      <p>Simple Game Project Template.</p>
+      <p>A demo by <a href="https://topotoy.com" target="_blank">Topotoy Labs</a>.</p>
     </div>
   </div>
 </body>
 
-
 <script>
-  /* Shared between editor/viewer. */
-  var Module = {
+  var Module =
+  {
     preRun: [],
     postRun: [],
     canvas: (function () {
       var canvas = document.querySelector("#canvas");
-      canvas.addEventListener("webglcontextlost", function (e) {
-        alert("WebGL context lost. Please reload the page."); e.preventDefault();
-      }, false);
+      canvas.addEventListener("webglcontextlost", function (e) { alert("WebGL context lost. Please reload the page."); e.preventDefault(); }, false);
       return canvas;
     })(),
     locateFile: function (path, prefix) {
-      if (path.endsWith(".wasm")) { return (/*g_webex_basedir*/"./" + path); }
-      if (path.endsWith(".data")) { return (/*g_webex_basedir*/"./" + path); }
-      return prefix + path;
+      if (path.endsWith(".wasm")) { return ("./" + path); }
+      if (path.endsWith(".data")) { return ("./" + path); }
+      return (prefix + path);
     },
     onRuntimeInitialized: function () { }
   };
-  function webex_in(op, d0, d1, d2) {
-    Module.ccall("webex_in", null, ["string", "string", "string", "string"], [op, d0, d1, d2]);
-  }
   var webex_is_alive = false;
-  function webex_out(op, d0, d1, d2) {
-    webex_is_alive = true;
-  }
+  function webex_in(op, d0, d1, d2) { Module.ccall("webex_in", null, ["string", "string", "string", "string"], [op, d0, d1, d2]); }
+  function webex_out(op, d0, d1, d2) { webex_is_alive = true; }
 </script>
-<script src="./monke-58570.js" type="text/javascript"></script>
-<!--
-<script type="module" crossorigin src="./monke-58570.js"></script>
-<script src="https://maverickexcelsior.com/htdocs/wp-content/builds/wasm/webex-viewer-version.js" type="text/javascript"></script>
-<script src="https://maverickexcelsior.com/htdocs/wp-content/builds/wasm/webex-viewer-module.js" type="text/javascript"></script>
--->
-<!--
-<script type='text/javascript'>
-  document.addEventListener("DOMContentLoaded", () => {
-    const js = document.createElement("script");
-    js.setAttribute('src', (g_webex_basedir + g_webex_viewer_version_js));
-    js.onload = () => {
-      Module.json = {
-        'set_clear_color': 'black',
-        'open_scene': 'https://maverickexcelsior.com/maverickexcelsior-demo.webex',
-      };
-    };
-    document.head.appendChild(js);
-  });
-</script>
--->
+
+<script src="./prototoy-58928.js" type="text/javascript"></script>
 
 </html>
