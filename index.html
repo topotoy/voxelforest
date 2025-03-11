@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="./favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Game Project Template</title>
+  <link rel="author" href="https://topotoy.com/" />
+
+  <!-- HTML Meta Tags -->
+  <title>Simple Game Project Template</title>
+  <meta name="description" content="Simple Game Project Template">
+  <meta name="keywords" content="Physics">
+
+  <!-- Facebook Meta Tags -->
+  <meta property="og:url" content="https://topotoy.com/prototoy/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Simple Game Project Template">
+  <meta property="og:description" content="Simple Game Project Template.">
+  <meta property="og:image" content="https://topotoy.com/prototoy/cover.jpg">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="WASM-based topotoy videogame.">
+  <meta property="twitter:domain" content="topotoy.com">
+  <meta property="twitter:url" content="https://topotoy.com/prototoy/">
+  <meta name="twitter:title" content="Simple Game Project Template">
+  <meta name="twitter:description" content="Simple Game Project Template.">
+  <meta name="twitter:image" content="https://topotoy.com/prototoy/cover.jpg">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    canvas {
+      width: 800px;
+      height: 600px;
+      background-color: #333;
+      border: 1px solid white;
+    }
+
+    .container {
+      text-align: center;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="container">
+      <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+      <p>Hold the mouse to grab.</p>
+      <h2>Simple Game Project Template</h2>
+      <p>Simple Game Project Template.</p>
+      <p>A demo by <a href="https://topotoy.com" target="_blank">Topotoy Labs</a>.</p>
+    </div>
+  </div>
+</body>
+
+<script>
+  var Module =
+  {
+    preRun: [],
+    postRun: [],
+    canvas: (function () {
+      var canvas = document.querySelector("#canvas");
+      canvas.addEventListener("webglcontextlost", function (e) { alert("WebGL context lost. Please reload the page."); e.preventDefault(); }, false);
+      return canvas;
+    })(),
+    locateFile: function (path, prefix) {
+      if (path.endsWith(".wasm")) { return ("./" + path); }
+      if (path.endsWith(".data")) { return ("./" + path); }
+      return (prefix + path);
+    },
+    onRuntimeInitialized: function () { }
+  };
+  var webex_is_alive = false;
+  function webex_in(op, d0, d1, d2) { Module.ccall("webex_in", null, ["string", "string", "string", "string"], [op, d0, d1, d2]); }
+  function webex_out(op, d0, d1, d2) { webex_is_alive = true; }
+</script>
+
+<script src="./prototoy-58928.js" type="text/javascript"></script>
+
+</html>
