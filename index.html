@@ -84,9 +84,9 @@
     },
     onRuntimeInitialized: function () { }
   };
-  var webex_is_alive = false;
-  function webex_in(op, d0, d1, d2) { Module.ccall("webex_in", null, ["string", "string", "string", "string"], [op, d0, d1, d2]); }
-  function webex_out(op, d0, d1, d2) { webex_is_alive = true; }
+  var wasm_is_alive = false;
+  function wasm_i(op, d0, d1, d2) { Module.ccall("wasm_i", null, ["string", "string", "string", "string"], [op, d0, d1, d2]); }
+  function wasm_o(op, d0, d1, d2) { wasm_is_alive = true; }
 </script>
 
 <script src="./prototoy-58928.js" type="text/javascript"></script>
